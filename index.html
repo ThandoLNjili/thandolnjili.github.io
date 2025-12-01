@@ -24,9 +24,9 @@
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#work">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
 
                 </ul>
@@ -47,9 +47,28 @@
                 Architecting Robust Backends.<br>
                 Crafting Beautiful Frontends.
             </h1>
-            <p>Hi. I'm Thando, a Full Stack Developer focusing on scalable web solutions and clean UI/UX.</p>
+            <p>Hi. I'm <b>Thando</b>, a Full Stack Developer focusing on scalable web solutions and clean UI/UX.</p>
             <a href="#work" class="cta-button">View My Work</a>
         </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p>
+            I'm a South African full-stack developer with a background in Computer Science and Software Engineering. I'm
+            passionate about building clean, reliable software that solves real problems — from automating business
+            workflows to developing modern, responsive web apps.
+        </p>
+        <p>
+            My journey hasn't been perfect, but it's made me resilient, adaptable, and hungry to grow. I'm rebuilding my
+            career with focus and discipline, strengthening my fundamentals in Python, Java, and JavaScript, and
+            steadily expanding my full-stack portfolio. I love creating systems that feel smooth, intuitive, and
+            genuinely helpful for the people who use them.
+        </p>
+        <p>
+            I'm looking for opportunities where I can contribute, learn fast, and grow into a strong, dependable
+            engineer.
+        </p>
     </section>
 
     <section id="skills">
@@ -128,31 +147,34 @@
         </div>
     </section>
 
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <p>
-            I'm a South African full-stack developer with a background in Computer Science and Software Engineering. I'm
-            passionate about building clean, reliable software that solves real problems — from automating business
-            workflows to developing modern, responsive web apps.
-        </p>
-        <p>
-            My journey hasn't been perfect, but it's made me resilient, adaptable, and hungry to grow. I'm rebuilding my
-            career with focus and discipline, strengthening my fundamentals in Python, Java, and JavaScript, and
-            steadily expanding my full-stack portfolio. I love creating systems that feel smooth, intuitive, and
-            genuinely helpful for the people who use them.
-        </p>
-        <p>
-            I'm looking for opportunities where I can contribute, learn fast, and grow into a strong, dependable
-            engineer.
-        </p>
-    </section>
-
     <footer id="contact">
+    <div class="footer-content">
         <h2>Let's Build Something.</h2>
-        <p>Open for Full Stack opportunities.</p>
-        <a href="mailto:your.email@example.com" class="email-link">Email Me</a>
+        <p>Open for Full Stack opportunities. Send me a message below.</p>
+
+        <form action="https://formspree.io/f/mldqngvo" method="POST" class="contact-form">
+            
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Hi, I'd like to hire you..."></textarea>
+            </div>
+
+            <button type="submit" class="cta-button">Send Message</button>
+        </form>
+
         <p class="copyright">&copy; <span id="current-year"></span> Built with code.</p>
-    </footer>
+    </div>
+</footer>
 
     <script src="js/script.js"></script>
 </body>
