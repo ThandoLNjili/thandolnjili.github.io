@@ -1,6 +1,78 @@
 /* 1. IMPORTS & VARIABLES */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
 
+/* * {
+    border: 1px solid red;
+} */
+
+/* --- LIGHT MODE OVERRIDES (COMPLETE) --- */
+body.light-mode {
+    --bg-color: #ffffff;       /* Pure White */
+    --card-bg: #f4f4f4;        /* Light Grey */
+    --text-color: #1a1a1a;     /* Almost Black */
+    --accent-color: #0056b3;   /* Darker Blue */
+}
+
+/* 1. Header & Footer Fixes */
+body.light-mode header {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+body.light-mode footer {
+    background-color: #f0f0f0; /* Light Gray Footer */
+    border-top: 1px solid #d1d1d1;
+    color: #333;
+}
+
+/* 2. Hero Section Contrast */
+body.light-mode #hero h1 {
+    /* Flip gradient to black->gray */
+    background: linear-gradient(to right, #000000, #555555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.light-mode #hero p {
+    color: #555; /* Darker grey text so it's readable on white */
+}
+
+/* 3. Skill Pills Fix */
+body.light-mode .skill-category li {
+    background: #e0e0e0; /* Light gray pill */
+    color: #000;         /* Black text */
+    border: 1px solid #ccc;
+}
+
+/* 4. Project Card Details */
+body.light-mode .project-card .tech-stack {
+    color: #444; /* Darker text for readability */
+}
+
+body.light-mode .copyright {
+    color: #666;
+}
+
+/* Ensure Toggle Button is visible */
+.theme-btn {
+    color: var(--text-color);
+}
+
+/* Style the Toggle Button */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+    color: var(--text-color); /* Ensures the sun/moon icon is visible */
+}
+
+.theme-btn:hover {
+    transform: rotate(45deg) scale(1.1);
+}
+
 :root {
     --bg-color: #0a0a0a;       /* Deep Black */
     --card-bg: #1c1c1c;        /* Dark Grey */
@@ -62,6 +134,27 @@ header {
 
 .desktop-nav a:hover {
     color: var(--accent-color);
+}
+
+/* 1. Make the Right Side a Flex Row */
+.header-right {
+    display: flex;
+    align-items: center; /* This forces the Nav text and Button to share a center line */
+    gap: 20px; /* Consistent spacing between Nav, Button, and Hamburger */
+}
+
+/* 2. Ensure Nav list items are also centered */
+.desktop-nav ul {
+    display: flex;
+    align-items: center; /* Ensures text inside nav aligns with button */
+    gap: 20px;
+    margin: 0; /* Remove default margin that pushes things down */
+}
+
+/* 3. Remove old margins from button (Gap handles spacing now) */
+.theme-btn {
+    margin: 0;
+    display: flex; /* Helps align the icon inside the button */
 }
 
 /* Hamburger Icon (Hidden on Desktop) */
