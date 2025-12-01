@@ -25,10 +25,11 @@ body.light-mode footer {
     color: #333;
 }
 
-/* 2. Hero Section Contrast */
 body.light-mode #hero h1 {
-    /* Flip gradient to black->gray */
-    background: linear-gradient(to right, #000000, #555555);
+    /* TIGHT SHOOTING STAR (Light Mode) */
+    background: linear-gradient(to right, #000000 45%, #999999 49%, #999999 51%, #000000 55%);
+    
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -185,11 +186,19 @@ header {
     font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    /* Gradient Text Effect */
-    background: linear-gradient(to right, #ffffff, #888888);
+    
+    /* TIGHT SHOOTING STAR (Dark Mode) */
+    /* Huge white sections, tiny grey stripe in middle */
+    background: linear-gradient(to right, #ffffff 45%, #666666 49%, #666666 51%, #ffffff 55%);
+    
+    /* 300% width gives us huge safety margins so it doesn't "Jump" */
+    background-size: 300% auto;
+    
     -webkit-background-clip: text;
-    background-clip: text;
     -webkit-text-fill-color: transparent;
+    
+    /* 6s Loop: Fast zip, long rest */
+    animation: text-wave 6s linear infinite;
 }
 
 #hero p {
@@ -423,4 +432,18 @@ body.light-mode textarea {
     background-color: #ffffff;
     border: 1px solid #ccc;
     color: #000;
+}
+
+/* --- ANIMATIONS --- */
+/* CONTINUOUS WAVE ANIMATION */
+@keyframes text-wave {
+    0% {
+        background-position: 100% 50%; /* Start: Star hidden on Left */
+    }
+    20% {
+        background-position: 0% 50%;   /* Zip: Star flies to Right */
+    }
+    100% {
+        background-position: 100% 50%; /* Rest: Hidden on right */
+    }
 }
