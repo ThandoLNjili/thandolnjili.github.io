@@ -444,6 +444,6 @@ body.light-mode textarea {
         background-position: 0% 50%;   /* Zip: Star flies to Right */
     }
     100% {
-        background-position: 100% 50%; /* Rest: Hidden on right */
+        background-position: 0% 50%;   /* Rest: Stay hidden on Right */
     }
 }
