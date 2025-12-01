@@ -43,10 +43,10 @@ themeBtn.addEventListener('click', () => {
     
     // Update the icon and save to memory
     if (isLightMode) {
-        themeBtn.textContent = '⏾'; // Show Moon (to switch back to dark)
+        themeBtn.textContent = '🌙'; // Show Moon (to switch back to dark)
         localStorage.setItem('theme', 'light');
     } else {
-        themeBtn.textContent = '☀︎'; // Show Sun (to switch to light)
+        themeBtn.textContent = '☀️'; // Show Sun (to switch to light)
         localStorage.setItem('theme', 'dark');
     }
 });
