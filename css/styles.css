@@ -69,8 +69,15 @@ body.light-mode .copyright {
     color: var(--text-color); /* Ensures the sun/moon icon is visible */
 }
 
-.theme-btn:hover {
-    transform: rotate(45deg) scale(1.1);
+@media (hover: hover) {
+    .theme-btn:hover {
+        transform: rotate(45deg) scale(1.1);
+    }
+}
+
+/* Optional: Add a subtle 'active' click effect for mobile users instead */
+.theme-btn:active {
+    transform: scale(0.9); /* slight press down effect */
 }
 
 :root {
