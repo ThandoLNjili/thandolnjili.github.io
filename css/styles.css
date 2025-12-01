@@ -1,0 +1,278 @@
+/* 1. IMPORTS & VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0a0a0a;       /* Deep Black */
+    --card-bg: #1c1c1c;        /* Dark Grey */
+    --text-color: #f0f0f0;     /* Off-White */
+    --accent-color: #00d4ff;   /* Neon Cyan */
+    --font-main: 'Space Grotesk', sans-serif;
+}
+
+/* 2. GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* 3. HEADER & NAV */
+header {
+    background-color: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    letter-spacing: -1px;
+}
+
+.desktop-nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.desktop-nav a {
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.desktop-nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Hamburger Icon (Hidden on Desktop) */
+.mobile-menu-icon {
+    display: none;
+}
+
+/* 4. HERO SECTION */
+#hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    /* Gradient Text Effect */
+    background: linear-gradient(to right, #ffffff, #888888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--accent-color);
+    color: #000;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-top: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+}
+
+/* 5. SECTIONS GENERAL */
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 1rem;
+}
+
+/* 6. SKILLS */
+.skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.skill-category h3 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.skill-category ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-category li {
+    background: #222;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.skill-category li:hover {
+    border-color: var(--accent-color);
+}
+
+/* 7. PROJECT GRID */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid #333;
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card .tech-stack {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 1rem 0;
+}
+
+.project-card .links a {
+    color: var(--accent-color);
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+#about p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* 8. FOOTER */
+footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #050505;
+    border-top: 1px solid #222;
+}
+
+.email-link {
+    display: inline-block;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 2rem;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* 9. MOBILE RESPONSIVENESS (The Landscaping) */
+@media (max-width: 768px) {
+    
+    /* Show Hamburger */
+    .mobile-menu-icon {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--text-color);
+    }
+
+    /* Hide Desktop Nav by Default */
+    .desktop-nav {
+        display: none; 
+    }
+
+    /* Active State (When JS clicks) */
+    .desktop-nav.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--bg-color);
+        width: 100%; /* Full width on mobile */
+        padding: 2rem;
+        border-bottom: 2px solid var(--accent-color);
+        text-align: center;
+    }
+
+    /* Adjust Typography */
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        text-align: center;
+        border-left: none;
+        border-bottom: 3px solid var(--accent-color);
+        display: inline-block;
+    }
+
+    /* Stack Sections */
+    .skill-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
