@@ -238,10 +238,14 @@ section {
 }
 
 /* 6. SKILLS */
+/* UPDATED SKILL GRID */
 .skill-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
+    display: grid;
+    /* This magic line says: "Create columns that are at least 300px wide, 
+       but share the available space equally." */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem;
+    align-items: start; /* Prevents cards from stretching vertically to match height */
 }
 
 .skill-category h3 {
