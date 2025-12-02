@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>TL NJILI | Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2300d4ff%22/><text x=%2250%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22black%22 text-anchor=%22middle%22>TN</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2300d4ff%22/><text x=%2250%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22black%22 text-anchor=%22middle%22>TN</text></svg>">
     <meta name="description"
         content="Portfolio of a Full Stack Developer specializing in Node.js, React, and scalable architectures.">
     <meta property="og:title" content="Thandolwethu Full Stack Developer Portfolio">
@@ -31,6 +32,11 @@
 
                 </ul>
             </nav>
+
+            <div class="gift-container">
+                <span id="xmas-trigger" role="button">🎁</span>
+                <span class="click-hint">Click me!</span>
+            </div>
 
             <button id="theme-toggle" aria-label="Switch Theme" class="theme-btn">
                 ☀️
@@ -72,43 +78,43 @@
     </section>
 
     <section id="skills">
-    <h2 class="section-title">Technical Arsenal</h2>
-    
-    <div class="skill-grid">
-        
-        <div class="skill-category proficient">
-            <h3>⚡ Proficient</h3>
-            <ul>
-                <li>JavaScript (ES6+)</li>
-                <li>TypeScript</li>
-                <li>React.js</li>
-                <li>Node.js</li>
-                <li>Git & GitHub</li>
-                <li>HTML5 & CSS3</li>
-            </ul>
-        </div>
+        <h2 class="section-title">Technical Arsenal</h2>
 
-        <div class="skill-category comfortable">
-            <h3>🛠️ Comfortable</h3>
-            <ul>
-                <li>Python</li>
-                <li>Express</li>
-                <li>SQL</li>
-            </ul>
-        </div>
+        <div class="skill-grid">
 
-        <div class="skill-category learning">
-            <h3>🌱 Learning</h3>
-            <ul>
-                <li>Java</li>
-                <li>Docker</li>
-                <li>CI/CD Pipelines</li>
-                <li>AWS Cloud</li>
-            </ul>
-        </div>
+            <div class="skill-category proficient">
+                <h3>⚡ Proficient</h3>
+                <ul>
+                    <li>JavaScript (ES6+)</li>
+                    <li>TypeScript</li>
+                    <li>React.js</li>
+                    <li>Node.js</li>
+                    <li>Git & GitHub</li>
+                    <li>HTML5 & CSS3</li>
+                </ul>
+            </div>
 
-    </div>
-</section>
+            <div class="skill-category comfortable">
+                <h3>🛠️ Comfortable</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>Express</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+
+            <div class="skill-category learning">
+                <h3>🌱 Learning</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Docker</li>
+                    <li>CI/CD Pipelines</li>
+                    <li>AWS Cloud</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
 
     <section id="work">
         <h2 class="section-title">Selected Works</h2>
@@ -151,33 +157,36 @@
     </section>
 
     <footer id="contact">
-    <div class="footer-content">
-        <h2>Let's Build Something.</h2>
-        <p>Open for Full Stack opportunities. Send me a message below.</p>
+        <div class="footer-content">
+            <h2>Let's Build Something.</h2>
+            <p>Open for Full Stack opportunities. Send me a message below.</p>
 
-        <form action="https://formspree.io/f/mldqngvo" method="POST" class="contact-form">
-            
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required placeholder="John Doe">
-            </div>
+            <form action="https://formspree.io/f/mldqngvo" method="POST" class="contact-form">
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="john@example.com">
-            </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
 
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Hi, I'd like to hire you..."></textarea>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
 
-            <button type="submit" class="cta-button">Send Message</button>
-        </form>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                        placeholder="Hi, I'd like to hire you..."></textarea>
+                </div>
 
-        <p class="copyright">&copy; <span id="current-year"></span> Built with code.</p>
-    </div>
-</footer>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+
+            <p class="copyright">
+                &copy; <span id="current-year"></span> Thandolwethu Linamandla Njili. Built with code.
+            </p>
+        </div>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>

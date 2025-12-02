@@ -1,57 +1,125 @@
-// 1. Select elements
+/* =========================================
+   1. MOBILE NAVIGATION LOGIC
+   ========================================= */
 const menuBtn = document.getElementById('mobile-menu-btn');
 const navLinks = document.querySelector('.desktop-nav');
 
-// 2. Main Toggle Function
-menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    
-    // Check if the menu is NOW open
-    const isOpen = navLinks.classList.contains('active');
-    
-    // Swap the icon text based on state
-    // '✕' is a multiplication sign (looks cleaner than letter X)
-    menuBtn.textContent = isOpen ? '✕' : '☰';
-});
-
-// 3. Close Menu When Link Clicked (UX Improvement)
-navLinks.addEventListener('click', () => {
-    // If the menu is open, close it
-    if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
+// Toggle Menu on Hamburger Click
+if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
         
-        // IMPORTANT: Reset the icon back to Hamburger!
-        menuBtn.textContent = '☰';
-    }
-});
+        // Check if open to swap icon
+        const isOpen = navLinks.classList.contains('active');
+        // Swap between Hamburger (☰) and Close (✕)
+        menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+}
 
-// 4. Dynamic Year in Footer
+// Close Menu when a Link is clicked (UX Improvement)
+if (navLinks) {
+    navLinks.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            // Reset icon back to Hamburger
+            menuBtn.textContent = '☰';
+        }
+    });
+}
+
+/* =========================================
+   2. DYNAMIC FOOTER YEAR
+   ========================================= */
 const yearSpan = document.getElementById('current-year');
 if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
 }
 
-// 5. Theme Toggle Logic (Keep your existing dark mode logic below)
+/* =========================================
+   3. THEME TOGGLE (DARK / LIGHT MODE)
+   ========================================= */
 const themeBtn = document.getElementById('theme-toggle');
 const body = document.body;
+
+// Check LocalStorage for saved preference
 const savedTheme = localStorage.getItem('theme');
 
+// Apply saved theme on load
 if (savedTheme === 'light') {
     body.classList.add('light-mode');
-    themeBtn.textContent = '🌙';
+    if (themeBtn) themeBtn.textContent = '🌙'; // Switch icon to Moon
 }
 
+// Toggle Logic
 if (themeBtn) {
     themeBtn.addEventListener('click', () => {
         body.classList.toggle('light-mode');
-        const isLightMode = body.classList.contains('light-mode');
         
-        if (isLightMode) {
-            themeBtn.textContent = '🌙';
-            localStorage.setItem('theme', 'light');
+        const isLightMode = body.classList.contains('light-mode');
+        const isXmas = body.classList.contains('xmas-mode');
+
+        // Save preference
+        localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+
+        // Update Icon (Check if Santa mode is active first!)
+        if (isXmas) {
+            themeBtn.textContent = '🎅';
         } else {
-            themeBtn.textContent = '☀️';
-            localStorage.setItem('theme', 'dark');
+            themeBtn.textContent = isLightMode ? '🌙' : '☀️';
         }
     });
+}
+
+/* =========================================
+   4. EASTER EGG (SOUTH HEMISPHERE XMAS)
+   ========================================= */
+// We select the CONTAINER to ensure clicks register easily
+const giftContainer = document.querySelector('.gift-container');
+
+if (giftContainer) {
+    giftContainer.addEventListener('click', () => {
+        
+        // A. Hide the "Click Me" hint permanently for this session
+        giftContainer.classList.add('clicked');
+
+        // B. Toggle the Red Theme
+        document.body.classList.toggle('xmas-mode');
+        
+        // C. Update the Main Theme Icon
+        const isXmas = document.body.classList.contains('xmas-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        
+        if (isXmas) {
+            // If Xmas is ON, show Santa and start rain
+            if (themeBtn) themeBtn.textContent = '🎅';
+            createSummerRain(); 
+        } else {
+            // If Xmas is OFF, revert to standard Sun/Moon
+            if (themeBtn) themeBtn.textContent = isLight ? '🌙' : '☀️';
+        }
+    });
+}
+
+// Function to generate falling emojis
+function createSummerRain() {
+    const emojis = ['☀️', '🕶️', '🍦', '🏄', '🎄', '🎁'];
+    
+    // Create 50 falling elements
+    for (let i = 0; i < 50; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('summer-rain');
+        drop.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        // Randomize position (0-100vw) and speed (2-5s)
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.animationDuration = Math.random() * 2 + 3 + 's'; 
+        drop.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+        
+        document.body.appendChild(drop);
+        
+        // Cleanup: Remove element from DOM after animation finishes
+        setTimeout(() => {
+            drop.remove();
+        }, 5000);
+    }
 }

@@ -451,3 +451,93 @@ body.light-mode textarea {
         background-position: 0% 50%;   /* Rest: Stay hidden on Right */
     }
 }
+
+/* --- EASTER EGG: SOUTH HEMISPHERE XMAS --- */
+
+/* 1. The Red Theme Override */
+body.xmas-mode {
+    --accent-color: #ff3333; /* Santa Red */
+}
+
+/* 2. The Falling Emojis Container */
+.summer-rain {
+    position: fixed;
+    top: -50px;
+    z-index: 9999;
+    font-size: 2rem;
+    animation: fall linear forwards; /* Fall once then stop */
+    pointer-events: none; /* Let users click through them */
+}
+
+/* 3. The Falling Animation */
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* --- EASTER EGG (HEADER POSITION) --- */
+
+/* 1. Container to hold gift + hint together */
+.gift-container {
+    position: relative; /* So the absolute hint stays near the gift */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 2. The Gift Icon */
+#xmas-trigger {
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+}
+
+#xmas-trigger:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* 3. The "Click Me" Tooltip */
+.click-hint {
+    position: absolute;
+    top: 35px; /* Push it below the gift */
+    left: 50%;
+    transform: translateX(-50%); /* Center it horizontally */
+    
+    background-color: var(--accent-color);
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    white-space: nowrap; /* Don't wrap text */
+    pointer-events: none; /* Let clicks pass through */
+    
+    /* Little Arrow pointing up */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%); /* Optional shape tweak */
+    
+    /* Animation */
+    animation: bounceHint 1s infinite alternate;
+}
+
+/* Make a tiny triangle pointer for the tooltip */
+.click-hint::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 5px 5px 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--accent-color) transparent;
+}
+
+/* Bounce Animation */
+@keyframes bounceHint {
+    from { transform: translateX(-50%) translateY(0); }
+    to { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Hide the hint once the user clicks (handled via JS class) */
+.gift-container.clicked .click-hint {
+    display: none;
+}
