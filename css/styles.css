@@ -54,20 +54,16 @@ body.light-mode .copyright {
     color: #666;
 }
 
-/* Ensure Toggle Button is visible */
-.theme-btn {
-    color: var(--text-color);
-}
-
 /* Style the Toggle Button */
 .theme-btn {
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    margin-right: 15px;
+    margin: 0;
+    display: flex;
     transition: transform 0.3s ease;
-    color: var(--text-color); /* Ensures the sun/moon icon is visible */
+    color: var(--text-color);
 }
 
 @media (hover: hover) {
@@ -98,6 +94,7 @@ body.light-mode .copyright {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* Prevents sticky header from covering anchor targets */
 }
 
 body {
@@ -159,11 +156,7 @@ header {
     margin: 0; /* Remove default margin that pushes things down */
 }
 
-/* 3. Remove old margins from button (Gap handles spacing now) */
-.theme-btn {
-    margin: 0;
-    display: flex; /* Helps align the icon inside the button */
-}
+
 
 /* Hamburger Icon (Hidden on Desktop) */
 .mobile-menu-icon {
@@ -310,6 +303,13 @@ section {
     font-size: 0.9rem;
 }
 
+.coming-soon {
+    color: #e03333;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
 #about p {
   margin-bottom: 1rem;
   line-height: 1.6;
@@ -452,92 +452,3 @@ body.light-mode textarea {
     }
 }
 
-/* --- EASTER EGG: SOUTH HEMISPHERE XMAS --- */
-
-/* 1. The Red Theme Override */
-body.xmas-mode {
-    --accent-color: #ff3333; /* Santa Red */
-}
-
-/* 2. The Falling Emojis Container */
-.summer-rain {
-    position: fixed;
-    top: -50px;
-    z-index: 9999;
-    font-size: 2rem;
-    animation: fall linear forwards; /* Fall once then stop */
-    pointer-events: none; /* Let users click through them */
-}
-
-/* 3. The Falling Animation */
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
-
-/* --- EASTER EGG (HEADER POSITION) --- */
-
-/* 1. Container to hold gift + hint together */
-.gift-container {
-    position: relative; /* So the absolute hint stays near the gift */
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-/* 2. The Gift Icon */
-#xmas-trigger {
-    font-size: 1.5rem;
-    transition: transform 0.2s;
-}
-
-#xmas-trigger:hover {
-    transform: scale(1.2) rotate(10deg);
-}
-
-/* 3. The "Click Me" Tooltip */
-.click-hint {
-    position: absolute;
-    top: 35px; /* Push it below the gift */
-    left: 50%;
-    transform: translateX(-50%); /* Center it horizontally */
-    
-    background-color: var(--accent-color);
-    color: #000;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    white-space: nowrap; /* Don't wrap text */
-    pointer-events: none; /* Let clicks pass through */
-    
-    /* Little Arrow pointing up */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%); /* Optional shape tweak */
-    
-    /* Animation */
-    animation: bounceHint 1s infinite alternate;
-}
-
-/* Make a tiny triangle pointer for the tooltip */
-.click-hint::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 5px 5px 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--accent-color) transparent;
-}
-
-/* Bounce Animation */
-@keyframes bounceHint {
-    from { transform: translateX(-50%) translateY(0); }
-    to { transform: translateX(-50%) translateY(-5px); }
-}
-
-/* Hide the hint once the user clicks (handled via JS class) */
-.gift-container.clicked .click-hint {
-    display: none;
-}

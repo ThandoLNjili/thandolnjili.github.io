@@ -56,70 +56,12 @@ if (themeBtn) {
         body.classList.toggle('light-mode');
         
         const isLightMode = body.classList.contains('light-mode');
-        const isXmas = body.classList.contains('xmas-mode');
 
         // Save preference
         localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
 
-        // Update Icon (Check if Santa mode is active first!)
-        if (isXmas) {
-            themeBtn.textContent = '🎅';
-        } else {
-            themeBtn.textContent = isLightMode ? '🌙' : '☀️';
-        }
+        // Update Icon
+        themeBtn.textContent = isLightMode ? '🌙' : '☀️';
     });
 }
 
-/* =========================================
-   4. EASTER EGG (SOUTH HEMISPHERE XMAS)
-   ========================================= */
-// We select the CONTAINER to ensure clicks register easily
-const giftContainer = document.querySelector('.gift-container');
-
-if (giftContainer) {
-    giftContainer.addEventListener('click', () => {
-        
-        // A. Hide the "Click Me" hint permanently for this session
-        giftContainer.classList.add('clicked');
-
-        // B. Toggle the Red Theme
-        document.body.classList.toggle('xmas-mode');
-        
-        // C. Update the Main Theme Icon
-        const isXmas = document.body.classList.contains('xmas-mode');
-        const isLight = document.body.classList.contains('light-mode');
-        
-        if (isXmas) {
-            // If Xmas is ON, show Santa and start rain
-            if (themeBtn) themeBtn.textContent = '🎅';
-            createSummerRain(); 
-        } else {
-            // If Xmas is OFF, revert to standard Sun/Moon
-            if (themeBtn) themeBtn.textContent = isLight ? '🌙' : '☀️';
-        }
-    });
-}
-
-// Function to generate falling emojis
-function createSummerRain() {
-    const emojis = ['☀️', '🕶️', '🍦', '🏄', '🎄', '🎁'];
-    
-    // Create 50 falling elements
-    for (let i = 0; i < 50; i++) {
-        const drop = document.createElement('div');
-        drop.classList.add('summer-rain');
-        drop.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-        
-        // Randomize position (0-100vw) and speed (2-5s)
-        drop.style.left = Math.random() * 100 + 'vw';
-        drop.style.animationDuration = Math.random() * 2 + 3 + 's'; 
-        drop.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
-        
-        document.body.appendChild(drop);
-        
-        // Cleanup: Remove element from DOM after animation finishes
-        setTimeout(() => {
-            drop.remove();
-        }, 5000);
-    }
-}
